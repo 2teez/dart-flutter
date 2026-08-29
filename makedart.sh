@@ -90,6 +90,7 @@ while getopts $optionstring opt; do
         r)
             # run the specified file
             filename="${OPTARG}"
+            dart format "$filename"
             dart run "$filename"
             ;;
         *)
