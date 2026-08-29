@@ -3,10 +3,11 @@
 # Purpose: Makefile for dart programming language and flutter
 # Author: omitida
 #
-
+filename=
 function help() {
     echo "Options Available:"
     echo "=================="
+    echo "-c: compile a dart file to generate an optimized executable"
     echo "-d: Delete the specified file"
     echo "-h: Display this help message"
     echo "-g: Generate dart file from the specified file"
@@ -15,15 +16,24 @@ function help() {
 }
 
 function make_file() {
-    local file="$1"
-    local ext="${file##*.}"
-    local name="${file%.*}"
+    filename="$1"
+    ext="${filename##*.}"
+    filename="${filename%.*}"
     if [[ "$ext" != "dart" ]]; then
-        name="$name.dart"
+        filename="$filename.dart"
     fi
-    echo "Generating dart file: $name"
-    touch "$name"
-    echo "Dart file generated successfully: $name"
+    echo "Generating dart file: $filename"
+}
+
+function create_dummy_file() {
+    filename="$1"
+    make_file "$filename"
+    echo "void main() {
+        print('Hello, World!');
+    }" > "$filename"
+    dart format "$filename"
+    echo "Dart file generated successfully: ${filename}"
+    dart run "$filename"
 }
 
 if [[ "$#" -ne 2 ]]; then
@@ -31,17 +41,27 @@ if [[ "$#" -ne 2 ]]; then
     exit 1
 fi
 
-optionstring="d:g:r:p:h"
+optionstring="c:d:g:r:p:h"
 
 while getopts $optionstring opt; do
     case "$opt" in
+        c)
+            # compile the specified file
+            filename="${OPTARG}"
+            if ! [[ -e "$filename" ]]; then
+                echo "File not found: ${filename}"
+                exit 1
+            fi
+            dart compile exe "${filename}"
+            echo "Executable compiled successfully: ${filename}"
+            ;;
         d)
             # delete the specified file
             ;;
         g)
             # generate dart code from the specified file
             filename="${OPTARG}"
-            make_file "${filename}"
+            create_dummy_file "${filename}"
             ;;
         h)
             help
@@ -53,7 +73,12 @@ while getopts $optionstring opt; do
             dart create "${filename}"
             echo "Project generated successfully: ${filename}"
             cd "${filename}" || exit 1
-            dart run #devtools
+            dart run
+            ;;
+        r)
+            # run the specified file
+            filename="${OPTARG}"
+            dart run "$filename"
             ;;
         *)
             echo "Invalid option: ${opt}"
