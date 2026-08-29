@@ -57,6 +57,18 @@ while getopts $optionstring opt; do
             ;;
         d)
             # delete the specified file
+            filename="${OPTARG}"
+            if ! [[ -e "$filename" ]]; then
+                echo "File not found: ${filename}"
+                exit 1
+            fi
+            while read -r -p "Are you sure you want to delete ${filename}? (y/n) " ans; do
+                case "${ans}" in
+                    [Yy]* ) rm "$filename"; echo "File deleted successfully: ${filename}"; break;;
+                    [Nn]* ) echo "Deletion cancelled."; break;;
+                    * ) echo "Please answer yes or no.";;
+                esac
+            done
             ;;
         g)
             # generate dart code from the specified file
