@@ -1,2 +1,4 @@
 .DS_Store
 .dart_tool
+.pytest_cache
+__pycache__
