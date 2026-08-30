@@ -1,3 +1,5 @@
+import 'package:characters/characters.dart';
+
 void main() {
   String name = "Dart";
   print("Hello, ${name}!");
@@ -18,4 +20,20 @@ void main() {
       'I \u2764 Flutter\u0021'
       ' and I \u2764 Dart\u0021';
   print(loving);
+  // challenge
+  const vote = 'Thumbs up! 👍';
+  print(vote);
+  print(vote.length);
+  print(vote.runes);
+  print(vote.codeUnits);
+  print(vote.characters.length);
+  //
+  String newName = 'Ray';
+  newName += ' Wender';
+  print(newName);
+  //
+  const number = 10;
+  const multipiler = 5;
+  final summary = '$number \u00D7 $multipiler = ${number * multipiler}';
+  print(summary);
 }
