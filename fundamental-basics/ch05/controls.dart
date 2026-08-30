@@ -1,6 +1,9 @@
 // uses enumeration
 enum Weather { sunny, snowy, cloudy, rainy }
 
+// challenge
+enum AudioState { playing, paused, stopped }
+
 void main() {
   // boolean statements in dart
   const myAge = 30;
@@ -54,6 +57,19 @@ void main() {
       break;
     case Weather.rainy:
       print('Rainy');
+      break;
+  }
+  // using audio state enum
+  final audioState = AudioState.playing;
+  switch (audioState) {
+    case AudioState.playing:
+      print('Playing');
+      break;
+    case AudioState.paused:
+      print('Paused');
+      break;
+    case AudioState.stopped:
+      print('Stopped');
       break;
   }
 }
