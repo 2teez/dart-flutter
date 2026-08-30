@@ -18,22 +18,32 @@ function help() {
 function make_file() {
     filename="$1"
     ext="${filename##*.}"
-    filename="${filename%.*}"
+    file="${filename%.*}"
     if [[ "$ext" != "dart" ]]; then
-        filename="$filename.dart"
+        filename="${file}.dart"
     fi
-    echo "Generating dart file: $filename"
+    # check if the file already exists and if so, append a number to the filename
+    if [[ -e "${filename}" ]]; then
+        echo "File ${filename} already exists. Appending a number to the filename."
+        i=1
+        while [[ -e "${filename}" ]]; do
+            file="${filename%.*}"
+            filename="${file}_${i}.dart"
+            ((i++))
+        done
+    fi
+    echo "Generating dart file: ${filename}"
 }
 
 function create_dummy_file() {
     filename="$1"
-    make_file "$filename"
+    make_file "${filename}"
     echo "void main() {
         print('Hello, World!');
-    }" > "$filename"
-    dart format "$filename"
+    }" > "${filename}"
+    dart format "${filename}"
     echo "Dart file generated successfully: ${filename}"
-    dart run "$filename"
+    dart run "${filename}"
 }
 
 if [[ "$#" -ne 2 ]]; then
