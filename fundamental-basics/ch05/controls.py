@@ -2,12 +2,16 @@
 #
 """
 doctest the enum classes of weather
->>> from controls import Weather
+>>> from ch05.controls import Weather
 >>> Weather.SUNNY
 It's sunny!
 
 >>> Weather.CLOUDY
 It's cloudy!
+
+>>> from ch05.controls import AudioState
+>>> AudioState.PLAYING
+playing
 """
 
 from enum import Enum
@@ -31,6 +35,20 @@ class Weather(Enum):
                 return "It's rainy!"
             case Weather.SNOWY:
                 return "It's snowy!"
+
+    @override
+    def __str__(self) -> str:
+        return self.__repr__()
+
+
+class AudioState(Enum):
+    PLAYING = "playing"
+    PAUSED = "paused"
+    STOPPED = "stopped"
+
+    @override
+    def __repr__(self) -> str:
+        return self.value
 
     @override
     def __str__(self) -> str:
