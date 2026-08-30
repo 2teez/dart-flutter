@@ -17,10 +17,12 @@ function help() {
 
 function make_file() {
     filename="$1"
+    local filename2=
     ext="${filename##*.}"
     file="${filename%.*}"
     if [[ "$ext" != "dart" ]]; then
         filename="${file}.dart"
+        filename2="${file}.py"
     fi
     # check if the file already exists and if so, append a number to the filename
     if [[ -e "${filename}" ]]; then
@@ -33,6 +35,16 @@ function make_file() {
         done
     fi
     echo "Generating dart file: ${filename}"
+    echo "Generating python file: ${filename2}"
+    echo "#!/usr/bin/env python3
+    def main() -> None:
+        ...
+
+    if __name__ == '__main__':
+        main()
+    " > "${filename2}"
+
+    echo "Done..."
 }
 
 function create_dummy_file() {
