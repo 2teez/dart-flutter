@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Date: 29th August, 2026
-# Purpose: Makefile for dart programming language and flutter
+# Description: Makefile for dart programming language and flutter
 # Author: omitida
 #
 filename=
