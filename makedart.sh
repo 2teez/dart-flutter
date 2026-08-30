@@ -37,13 +37,14 @@ function make_file() {
     echo "Generating dart file: ${filename}"
     echo "Generating python file: ${filename2}"
     echo "#!/usr/bin/env python3
-    def main() -> None:
-        ...
 
-    if __name__ == '__main__':
-        main()
+def main() -> None: ...
+
+if __name__ == \"__main__\":
+    main()
     " > "${filename2}"
 
+    chmod +x "${filename2}"
     echo "Done..."
 }
 
