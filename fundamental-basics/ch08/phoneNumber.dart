@@ -1,8 +1,8 @@
 class PhoneNumber {
   final String number;
 
-  const PhoneNumber(this.number);
-  const PhoneNumber.fromString(String number) : this(number);
+  const PhoneNumber({required this.number});
+  const PhoneNumber.fromString({required String number}) : this(number: number);
 
   @override
   String toString() => number;
