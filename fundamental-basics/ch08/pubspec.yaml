@@ -1,0 +1,6 @@
+name: ch08
+version: 0.1.0
+description: A dart app for chapter 8 of the Learn Flutter book.
+
+environment:
+  sdk: ">=3.12.0 <4.0.0"
