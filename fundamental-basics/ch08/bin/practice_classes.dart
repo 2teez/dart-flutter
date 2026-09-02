@@ -1,6 +1,7 @@
 import 'package:ch08/math.dart' as math;
 import 'package:ch08/phoneNumber.dart';
 import 'package:ch08/rectangle.dart';
+import 'package:ch08/sphere.dart';
 import 'package:ch08/student.dart';
 import 'package:ch08/user.dart';
 
@@ -27,4 +28,9 @@ void main() {
   //
   print(math.max(5, 10));
   print(math.min(5, 10));
+  //
+  final sphere = Sphere(radius: 12);
+  print(sphere);
+  print(sphere.volume);
+  print(sphere.surfaceArea);
 }
