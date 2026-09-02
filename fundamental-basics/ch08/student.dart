@@ -5,7 +5,7 @@ class Student {
 
   int get grade => this._grade;
 
-  Student({required this.firstName, required this.lastName, required this._grade});
+  Student({required this.firstName, this.lastName = "", required this._grade});
 
   @override
   String toString() => 'Student($firstName $lastName ($grade))';
