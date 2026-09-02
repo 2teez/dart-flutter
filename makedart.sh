@@ -13,6 +13,7 @@ function help() {
     echo "-g: Generate dart file from the specified file"
     echo "-p: Generate a date project from the specified filename"
     echo "-r: Run the specified file"
+    echo "-m: Make a dart mini project from the specified filename"
 }
 
 function make_file() {
@@ -64,7 +65,7 @@ if [[ "$#" -ne 2 ]]; then
     exit 1
 fi
 
-optionstring="c:d:g:r:p:h"
+optionstring="c:d:g:r:p:m:h"
 
 while getopts $optionstring opt; do
     case "$opt" in
@@ -115,6 +116,28 @@ while getopts $optionstring opt; do
             filename="${OPTARG}"
             dart format "$filename"
             dart run "$filename"
+            ;;
+        m)
+            # make a dart mini project from the specified filename
+            directory="${OPTARG}"
+            mkdir -p "${directory}"
+            cd "${directory}" || exit 1
+            mkdir bin lib
+            cd bin || exit 1
+            create_dummy_file main
+            cd .. || exit 1
+            echo "name: ${directory}
+version: 0.1.0
+description: A Dart mini project
+
+environment:
+  sdk: \">=3.12.0 <4.0.0\"
+
+dev_dependencies:
+  lints: ^6.1.0
+            " > pubspec.yaml
+            dart pub get
+            dart run bin/main.dart
             ;;
         *)
             echo "Invalid option: ${opt}"
