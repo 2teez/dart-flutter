@@ -1,3 +1,6 @@
+import 'package:ch11/user.dart';
+
 void main() {
-  print('Hello, World!');
+  final user = User('Java');
+  print(user);
 }
