@@ -1,5 +1,6 @@
 import 'phoneNumber.dart';
 import 'rectangle.dart';
+import 'student.dart';
 import 'user.dart';
 
 void main() {
@@ -17,4 +18,9 @@ void main() {
   print(phone);
   const phone2 = PhoneNumber(number: '0705-554-070');
   print(phone2);
+  //
+  final student = Student(firstName: 'Bert', grade: 95);
+  final student2 = Student(firstName: 'Ernie', lastName: 'Smith', grade: 85);
+  print(student);
+  print(student2);
 }
