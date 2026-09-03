@@ -1,3 +1,5 @@
+import 'package:ch12/animals.dart';
+
 void main() {
   final months = <String>[];
   months.add('Jan');
@@ -20,11 +22,17 @@ void main() {
   printed('After removing', months);
   months.insert(marchIndex, 'Mar');
   printed('After inserting', months);
+  //
+  exercise();
+  playGround();
 }
 
 void printed(String? msg, List<String>? months) {
   print(msg ?? '');
   print(months ?? []);
+}
+
+void exercise() {
   // exercise
   const numbers = [1, 2, 4, 7];
   for (var i = 0; i < numbers.length; i++) {
