@@ -1,0 +1,6 @@
+name: ch14
+version: 1.0.0
+description: A sample Flutter app for learning map basics
+
+environment:
+  sdk: "^3.13.0"

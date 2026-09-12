@@ -1,3 +1,5 @@
+import 'package:ch14/user.dart';
+
 void main() {
   final personInfo = <String, String>{
     'name': 'malto ruby',
@@ -14,4 +16,11 @@ void main() {
   for (var entry in personInfo.entries) {
     print('${entry.key}: ${entry.value}');
   }
+  //
+  final user = User(
+    id: '1345',
+    name: 'malto ruby',
+    emails: ['malto.ruby@example.com', 'maltodotruby@example.com'],
+  );
+  print(user);
 }
