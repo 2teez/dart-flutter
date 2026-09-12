@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ch14/user.dart';
 
 void main() {
@@ -24,4 +26,11 @@ void main() {
   );
   print(user);
   print(user.toJson());
+
+  final person = const <String, dynamic>{"name": "javascript", "age": 34};
+
+  final personJson = json.encode(person);
+  print(personJson);
+  print(json.decode(personJson));
+  print(User.fromJson(json.decode(personJson)));
 }
