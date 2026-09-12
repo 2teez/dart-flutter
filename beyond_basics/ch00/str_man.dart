@@ -4,5 +4,5 @@ void main() {
   final hrs = timer.inHours;
   final mins = "${timer.inMinutes % 60}".padLeft(2, '0');
   final secs = "${timer.inSeconds % 60}".padLeft(2, '0');
-  print("Time is: $hrs:$mins:$secs");
+  print(" Time is: $hrs:$mins:$secs ".trim());
 }
