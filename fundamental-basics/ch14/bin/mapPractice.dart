@@ -23,4 +23,5 @@ void main() {
     emails: ['malto.ruby@example.com', 'maltodotruby@example.com'],
   );
   print(user);
+  print(user.toJson());
 }
