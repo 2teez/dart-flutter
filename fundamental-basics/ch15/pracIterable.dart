@@ -26,17 +26,19 @@ void main() {
   }
 
   printed("Length of the data structure: ", "${myIterable.length}");
+  print(
+    "Check out the MyString again: ${"flutter is Amazing".split(" ").map((e) => MyString.toTitleCase(e).string).join(" ")}",
+  );
 }
 
 void printed(String msg, String? it) => print("$msg ${it ?? ""}");
 
 class MyString {
   MyString._internal(this._str);
-  factory MyString.toTitleCase(String str) => MyString._internal(
-    "${str[0].toUpperCase()}${str.substring(1).toLowerCase()}",
-  );
-
-  final String _str;
+  factory MyString.toTitleCase(String str) =>
+      MyString._internal("${str[0].toUpperCase()}${str.substring(1).toLowerCase()}");
+  String get string => this._str;
+  late final String _str;
   @override
   String toString() => this._str;
 }
