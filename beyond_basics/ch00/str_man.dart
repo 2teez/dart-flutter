@@ -5,4 +5,14 @@ void main() {
   final mins = "${timer.inMinutes % 60}".padLeft(2, '0');
   final secs = "${timer.inSeconds % 60}".padLeft(2, '0');
   print(" Time is: $hrs:$mins:$secs ".trim());
+
+  final contries = """France
+  USA
+  Germany
+  Benin
+  China
+  Mexico
+  Mongolia
+  """;
+  print(contries.split('\n').map((e) => e.trim()).join(','));
 }
