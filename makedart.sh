@@ -11,7 +11,7 @@ function help() {
     echo "-d: Delete the specified file"
     echo "-h: Display this help message"
     echo "-g: Generate dart file from the specified file"
-    echo "-p: Generate a date project from the specified filename"
+    echo "-p: Generate a dart project from the specified filename"
     echo "-r: Run the specified file"
     echo "-m: Make a dart mini project from the specified filename"
 }
