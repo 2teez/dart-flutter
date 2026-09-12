@@ -15,4 +15,12 @@ void main() {
   Mongolia
   """;
   print(contries.split('\n').map((e) => e.trim()).join(','));
+  // validate credit-card number
+  final String ccn = '2345908734560657';
+  final ccnPattern = RegExp(r'^[0-9]{16}$');
+  if (!ccnPattern.hasMatch(ccn)) {
+    print('Card number not correct!');
+  } else {
+    print('$ccn is corrcet card number');
+  }
 }
