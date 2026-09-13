@@ -4,11 +4,18 @@ void main() {
   print(scores);
   final bGrades = scores.where((grade) => grade >= 80 && grade <= 90);
   print("B Grades: ${bGrades.toList()}");
+  //
+  final surface = Surface(onTouch: (x, y) => print("$x, $y"));
+  surface.touch(202.3, 134.0);
 }
 
 // Exercise
+typedef TouchHandler = void Function(double x, double y);
+
 class Surface {
   Surface({required this.onTouch});
 
-  final void Function(int x, int y) onTouch;
+  final TouchHandler onTouch;
+
+  void touch(double x, double y) => onTouch(x, y);
 }
