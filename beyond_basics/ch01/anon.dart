@@ -7,6 +7,29 @@ void main() {
   //
   final surface = Surface(onTouch: (x, y) => print("$x, $y"));
   surface.touch(202.3, 134.0);
+  // challenges
+  final animals = {'sheep': 99, 'goats': 32, 'snakes': 7, 'lions': 80, 'seals': 18};
+  print(
+    animals.keys
+        .where((animal) => animal.startsWith('s'))
+        .map((key) => animals[key] ?? 0)
+        .reduce((x, y) => x + y),
+  );
+  //
+  final anon = repeatTask(4, 2, (x) => x * x);
+  print(anon);
+}
+
+int repeatTask(int times, int input, Function task) {
+  var counter = 0;
+  while (true) {
+    if (times == counter) {
+      break;
+    }
+    input = task(input);
+    ++counter;
+  }
+  return input;
 }
 
 // Exercise
