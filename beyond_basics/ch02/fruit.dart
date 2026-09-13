@@ -2,11 +2,6 @@ void main() {
   final watermelon = Watermelon("red");
   watermelon.describeColor();
   print(watermelon);
-  // students
-  final std1 = Student([Roles.Athlete, Roles.StudentUnionMember]);
-  print(std1);
-  final std2 = Student([Roles.BandMember]);
-  print(std2);
 }
 
 class Fruit {
@@ -35,16 +30,4 @@ class Watermelon extends Melon {
 
 class Cantaloupe extends Melon {
   Cantaloupe(super.color);
-}
-
-enum Roles { Athlete, BandMember, StudentUnionMember }
-
-class Person {}
-
-class Student extends Person {
-  Student(this.roles);
-  final List<Roles> roles;
-
-  @override
-  String toString() => "Student(Roles: ${roles.join(', ')})";
 }
