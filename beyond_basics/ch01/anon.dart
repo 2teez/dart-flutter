@@ -5,3 +5,10 @@ void main() {
   final bGrades = scores.where((grade) => grade >= 80 && grade <= 90);
   print("B Grades: ${bGrades.toList()}");
 }
+
+// Exercise
+class Surface {
+  Surface({required this.onTouch});
+
+  final void Function(int x, int y) onTouch;
+}
