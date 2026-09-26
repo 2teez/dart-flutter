@@ -11,7 +11,10 @@ void main() {
     final bad = badSpeaking();
     print(bad);
   } catch (e) {
+    // can also use on RangeException
     print(e);
+  } finally {
+    print('done');
   }
 }
 
